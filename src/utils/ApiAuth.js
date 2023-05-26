@@ -31,7 +31,7 @@ class ApiAuth {
         })
             .then((res) => this._getJson(res));
     }
-    checkToken(token) {
+    check(token) {
         return fetch(`${this._url}/users/me`, {
             method: "GET",
             headers: {

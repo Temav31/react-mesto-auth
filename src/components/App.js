@@ -175,7 +175,7 @@ function App() {
   React.useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      auth.checkToken(token)
+      auth.check(token)
         .then((data) => {
           setАuthoriz(true);
           setEmail(data.data.email);
