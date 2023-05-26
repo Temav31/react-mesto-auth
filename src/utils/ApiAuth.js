@@ -1,6 +1,6 @@
 class ApiAuth {
-    constructor(basePath) {
-        this._basePath = basePath;
+    constructor(url) {
+        this._url = url;
         // this._token = token;
     }
     _getHeaders() {
@@ -15,8 +15,24 @@ class ApiAuth {
         }
         return Promise.reject(`Ошибка: ${res.status}`);
     }
+    authorization(body) {
+        return fetch(`${this._url}/signin`, {
+            method: "POST",
+            headers: this._getHeaders(),
+            body: JSON.stringify(body)
+        })
+            .then((res) => this._getJson(res));
+    }
+    registration(body) {
+        return fetch(`${this._url}/signup`, {
+            method: "POST",
+            headers: this._getHeaders(),
+            body: JSON.stringify(body)
+        })
+            .then((res) => this._getJson(res));
+    }
     checkToken(token) {
-        return fetch(`${this._basePath}/users/me`, {
+        return fetch(`${this._url}/users/me`, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -26,24 +42,8 @@ class ApiAuth {
         })
             .then((res) => this._getJson(res));
     }
-    register(body) {
-        return fetch(`${this._basePath}/signup`, {
-            method: "POST",
-            headers: this._getHeaders(),
-            body: JSON.stringify(body)
-        })
-            .then((res) => this._getJson(res));
-    }
-    authorize(body) {
-        return fetch(`${this._basePath}/signin`, {
-            method: "POST",
-            headers: this._getHeaders(),
-            body: JSON.stringify(body)
-        })
-            .then((res) => this._getJson(res));
-    }
 }
-// класс апи
+// класс апи 
 const auth = new ApiAuth('https://auth.nomoreparties.co');
 // экспортирем класс
 export default auth;
