@@ -74,20 +74,6 @@ class Api {
                 .then(this._getJson);
         }
     }
-    // likeCard(id) {
-    //     return fetch(`${this._basePath}/cards/${id}/likes`, {
-    //         method: "PUT",
-    //         headers: this._getHeaders(),
-    //     })
-    //         .then(this._getJson);
-    // }
-    // deleteLikeCard(id) {
-    //     return fetch(`${this._basePath}/cards/${id}/likes`, {
-    //         method: "DELETE",
-    //         headers: this._getHeaders(),
-    //     })
-    //         .then(this._getJson);
-    // }
 }
 // класс апи
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-62', '1a6e0a32-00a7-4ba0-818b-d0147d70095f');
