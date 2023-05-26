@@ -118,6 +118,7 @@ function App() {
   }
   // хук эфекта с получением данных из апи
   React.useEffect(() => {
+    if(!result) return;
     api.getProfile()
       .then((data) => {
         setCurrentUser(data);
@@ -132,7 +133,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [result]);
   // Новый спринт
   // выход
   function handleExit() {
