@@ -142,7 +142,7 @@ function App() {
   }
   // авторизация 
   function handleLogin(dataLog) {
-    auth.authorize(dataLog)
+    auth.authorization(dataLog)
       .then((data) => {
         if (data.token) {
           localStorage.setItem("token", data.token);
@@ -158,7 +158,7 @@ function App() {
   }
   // регистрация 
   function handleRegister(data) {
-    auth.register(data)
+    auth.registration(data)
       .then(() => {
         setResult(true);
         navigate("/sign-in");
