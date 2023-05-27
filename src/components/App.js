@@ -14,8 +14,6 @@ import Login from './Login';
 import InfoTooltip from './InfoTooltip';
 // импорт картинок
 import ImagePopup from './ImagePopup';
-// import successImage from '../image/Successfully.png';
-// import failedImage from '../image/Failed.png';
 // импорт компонентов
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
@@ -118,7 +116,7 @@ function App() {
   }
   // хук эфекта с получением данных из апи
   React.useEffect(() => {
-    if(!result) return;
+    if(!authoriz) return;
     api.getProfile()
       .then((data) => {
         setCurrentUser(data);
@@ -133,7 +131,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, [result]);
+  }, [authoriz]);
   // Новый спринт
   // выход
   function handleExit() {
